@@ -17,22 +17,16 @@ def CC(string, shift)
             number
         else
 # needs to check number AFTER/IF shifted and subtract 26 if outside of letter range
-            number + shift;
-
+            if ((number + shift) >= 65 && (number + shift) <= 90) || 
+                ((number + shift) >= 97 && (number + shift) <= 122)
+                number + shift
+            else
+                number + shift - 26
+            end
         end
     }
     p "newinput = #{newinput}"
-    alphwrap = newinput.map {|number| 
-        if number == 32
-            number
-        elsif (number >= 65 && number <= 90) || (number >= 97 && number <= 122)
-         number
-        else
-            number - 26
-        end
-    }
-    p "alphwrap = #{alphwrap}"
-    finaloutput = alphwrap.map(&:chr).join("")
+    finaloutput = newinput.map(&:chr).join("")
     p "finaloutput = #{finaloutput}"
 
 
